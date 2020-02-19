@@ -1,0 +1,24 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    background-color: pink;
+    justify-content: space-around;
+    color: #ffffff;
+    box-shadow: 2px 2px 7px 2px lightgray;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+.navbar ul li {
+    margin: 1rem;
+    font-weight: 500;
+}
+
+.navbar ul li:hover {
+    border-bottom: 5px solid gray;
+}
+
