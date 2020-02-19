@@ -4,8 +4,12 @@
     height: 5rem;
     background-color: #dda0dd;
     justify-content: space-around;
-    color: #ffffff;
     box-shadow: 2px 2px 7px 2px lightgray;
+}
+
+.navbar h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.2rem;
 }
 
 .navbar ul {
@@ -22,3 +26,7 @@
     border-bottom: 5px solid gray;
 }
 
+.navbar a {
+    text-decoration: none;
+    color: #ffffff;
+}
