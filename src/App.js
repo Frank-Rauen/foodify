@@ -10,6 +10,8 @@ import Footer from '../src/components/Footer/Footer';
 //Page Components
 import Home from './pages/Home/Home';
 import Restaurants from './pages/Restaurants/Restaurants';
+import Login from './pages/Login/Login';
+import Signup from './pages/Signup/Signup'
 
 function App() {
   return (
@@ -23,6 +25,12 @@ function App() {
         } />
         <Route exact path='/restaurants' render={props => (
           <Restaurants />
+        )} />
+        <Route exact path='/login' render={props => (
+          <Login />
+        )} />
+        <Route exact path='/signup' render={props =>(
+          <Signup />
         )} />
       </Switch>
     </div>

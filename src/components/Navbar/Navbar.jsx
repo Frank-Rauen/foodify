@@ -7,9 +7,9 @@ const Navbar = (props) => {
         <nav className={styles.navbar}>
             <Link to='/'><h1>Foodify</h1></Link>
             <ul>
-                <Link to='/restaurants'><li>Restaurants</li></Link>
-                <li>Login</li>
-                <li>Signup</li>
+                <li><Link to='/restaurants'>Restaurants</Link></li>
+                <li><Link to='/login'>Login</Link></li>
+                <li><Link to= '/signup'>Signup</Link></li>
 
             </ul>
         </nav>
