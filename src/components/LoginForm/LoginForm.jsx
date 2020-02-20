@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
-import styles from './SignupForm.module.css';
+import styles from './LoginForm.module.css';
 
-class SignupForm extends Component {
+class LoginForm extends Component {
    
-    state = {
-        name: '',
+    state = { 
         email: '',
-        password: '',
-        passwordConfirmation: ''
+        password: ''
     };
 
     getInitialState() {
-        return{
-        name: '',
+        return {
         email: '',
-        password: '',
-        passwordConfirmation: ''
+        password: ''
         }
     }
 
@@ -34,15 +30,8 @@ class SignupForm extends Component {
        return (
            <form onSubmit={this.handleSubmit} className={styles.form}>
              <fieldset>
-                 <legend>Signup Form</legend>
+                 <legend>Login Form</legend>
 
-            <label htmlFor='name'>Full Name:</label>               
-               <input 
-               id='name' 
-               name='name' 
-               type='text' 
-               value={this.state.name}
-               onChange={this.handleChange}/>
 
             <label htmlFor='email'>Email:</label>
                <input 
@@ -60,13 +49,6 @@ class SignupForm extends Component {
                value={this.state.password}
                onChange={this.handleChange}/>
 
-            <label htmlFor='passwordConfirmation'>Confirm Password:</label>
-               <input i
-               d='passwordConfirmation' 
-               name='passwordConfirmation' 
-               type='password' 
-               alue={this.state.passwordConfirmation}
-               onChange={this.handleChange}/>
 
                <button type='submit'>Submit</button>
             </fieldset>
@@ -75,4 +57,4 @@ class SignupForm extends Component {
    }
 }
 
-export default SignupForm;
+export default LoginForm;
