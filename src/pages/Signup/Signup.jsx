@@ -6,7 +6,8 @@ const Signup = (props => {
     return(
     <main>
         <h1>Signup</h1>
-        <SignupForm />
+        <SignupForm {...props}
+        handleSignupOrLogin={props.handleSignupOrLogin} />
     </main>
     )
 });

@@ -19,6 +19,15 @@ const userSchema = new Schema({
     timestamps: true
 })
 
+userSchema.set('toJSON', {
+    transform: function(doc, ret) {
+        delete ret.password
+        delete ret.createdAt
+        delete ret.updatedAt
+        delete ret.__V
+    }
+});
+
 userSchema.pre('save', function(next){
     const user = this;
     if(!user.isModified('password')) return next();
