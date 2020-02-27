@@ -23,8 +23,9 @@ class SignupForm extends Component {
 
     isFormValid = () => {
         return (
-            this.state.name && this.state.email && 
-            this.state.password === this.state.passwordConfirmation
+            this.state.email && 
+            this.state.password && 
+        this.state.password === this.state.passwordConfirmation
         );
     }
 

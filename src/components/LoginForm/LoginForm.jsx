@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './LoginForm.module.css';
+import userService from '../../utils/userService';
 
 class LoginForm extends Component {
    
@@ -11,24 +12,54 @@ class LoginForm extends Component {
     getInitialState() {
         return {
         email: '',
-        password: ''
+        password: '',
+        error: ''
         }
     }
 
     handleChange = evt => {
         this.setState({
+            error: '',
             [evt.target.name]: evt.target.value
         })
     }
 
-    handleSubmit = evt => {
+    handleSubmit = async evt => {
         evt.preventDefault();
-        this.setState(this.getInitialState());
+        if(!this.isFormValid()) return;
+        try {
+            const {email, password} =  this.state;
+
+            await userService.login({email, password});
+            this.setState(this.getInitialState(), () => {
+                
+                this.props.handleSignupOrLogin();
+                this.props.history.push('/restaurants');
+            });
+
+        } catch (error) {
+            this.setState({
+                email: '',
+                password: '',
+                error: error.message
+            })
+        }
+        
+
     }
+
+    isFormValid = evt => {
+        return(
+        this.state.email && this.state.password
+        )}
    
     render() {
        return (
-           <form onSubmit={this.handleSubmit} className={styles.form}>
+           <section className={styles.section}>
+               {
+                   this.state.error && <p>{this.state.error}</p>
+               }
+             <form onSubmit={this.handleSubmit}>
              <fieldset>
                  <legend>Login Form</legend>
 
@@ -50,9 +81,10 @@ class LoginForm extends Component {
                onChange={this.handleChange}/>
 
 
-               <button type='submit'>Submit</button>
+               <button disabled={!this.isFormValid()} type='submit'>Submit</button>
             </fieldset>
            </form>
+        </section>
        )
    }
 }

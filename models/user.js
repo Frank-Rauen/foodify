@@ -19,6 +19,10 @@ const userSchema = new Schema({
     timestamps: true
 })
 
+userSchema.methods.comparePassword = function(tryPassword, callback) {
+    bcrypt.compare(tryPassword, this.password, callback)
+};
+
 userSchema.set('toJSON', {
     transform: function(doc, ret) {
         delete ret.password
