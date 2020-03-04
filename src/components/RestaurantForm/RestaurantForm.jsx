@@ -31,7 +31,7 @@ class RestaurantForm extends Component {
             await restaurantService.create({title, cuisine, addedBy})
             
             this.setState(this.getInitialState(), () => {
-                
+                this.props.handleGetRestaurants();
                 this.props.history.push('/restaurants');
             });
 

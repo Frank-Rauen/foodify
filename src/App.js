@@ -13,11 +13,14 @@ import Restaurants from './pages/Restaurants/Restaurants';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup'
 import userService from './utils/userService';
+import restaurantService from './utils/restaurantService';
 
 class App extends Component {
 
   state = {
-    user: userService.getUser()
+    user: userService.getUser(),
+    restaurants: [],
+    featuredRestaurants: []
   }
 
   handleSignupOrLogin = () => {
@@ -29,6 +32,23 @@ class App extends Component {
     this.setState({user: null});
   }
 
+  handleGetRestaurants = async () =>  {
+    if(userService.getUser()) {
+     const {restaurants} = await restaurantService.index();
+     this.setState({ restaurants })
+    }
+  }
+
+  handleGetFeaturedRestaurants = async () => {
+    const {featuredRestaurants} = await restaurantService.getFeatured();
+    this.setState({featuredRestaurants})
+ }
+
+ async componentDidMount() {
+  this.handleGetFeaturedRestaurants();  
+  this.handleGetRestaurants();  
+  }
+
   render() {
 
     return (
@@ -38,13 +58,14 @@ class App extends Component {
     <div className="App-inner-container">
       <Switch>
         <Route exact path='/' render={props =>
-        <Home />
+        <Home featuredRestaurants = {this.featuredRestaurants}/>
       } />
         <Route exact path='/restaurants' render={props => (
           userService.getUser()
           ?
           <Restaurants 
-          {...props}/>
+          {...props} restaurants = {this.state.restaurants} 
+          handleGetRestaurants={this.handleGetRestaurants}/>
           : <Redirect to='/login' />
           )} />
         <Route exact path='/login' render={props => (
