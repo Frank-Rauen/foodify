@@ -11,7 +11,7 @@ const restaurantSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    reviews: reviewSchema
+    // reviews: reviewSchema
 }, {
     timestamps: true
 })

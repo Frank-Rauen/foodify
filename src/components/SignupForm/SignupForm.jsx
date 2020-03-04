@@ -94,11 +94,11 @@ class SignupForm extends Component {
                onChange={this.handleChange}/>
 
             <label htmlFor='passwordConfirmation'>Confirm Password:</label>
-               <input i
-               d='passwordConfirmation' 
+               <input
+               id='passwordConfirmation' 
                name='passwordConfirmation' 
                type='password' 
-               alue={this.state.passwordConfirmation}
+               value={this.state.passwordConfirmation}
                onChange={this.handleChange}/>
 
                <button disabled={!this.isFormValid()} type='submit'>Submit</button>
